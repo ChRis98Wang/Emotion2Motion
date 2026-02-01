@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+.venv/
+venv/
+
+# OS
+.DS_Store
+
+# Training artifacts
+*.pt
+*.pth
+*.ckpt
+
+# Data outputs
+/data/raw/
+/data/processed/
+/data/tmp/
+/data/tmp/tensorboard/
+
+# Parquet/CSV outputs (keep manifests)
+/data/processed/*.parquet
+/data/processed/*.json
+/data/raw/*.csv
+/data/tmp/generated/
+
+# Plots
+/data/tmp/plots/

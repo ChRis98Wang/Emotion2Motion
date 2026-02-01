@@ -1,0 +1,25 @@
+seed: 42
+use_cuda: true
+
+model:
+  backbone: unet1d
+  cond_dim: 128
+  base_channels: 64
+  num_down: 2
+  num_res_blocks: 2
+
+optim:
+  lr: 0.001
+  weight_decay: 0.0
+  batch_size: 16
+
+training:
+  num_steps: 40000
+  log_interval: 20
+  save_every: 200
+  save_dir: data/tmp/checkpoints
+
+dataset:
+  parquet_path: data/processed/clips.parquet
+  stats_path: data/processed/stats.json
+  use_delta_q: true

@@ -1,0 +1,20 @@
+ckpt_path: data/tmp/checkpoints/flow_last.pt
+stats_path: data/processed/stats.json
+sampling_steps: 4
+fps: 60
+clip_sec: 4.0
+
+cond:
+  emotion:
+    valence: 0.6
+    arousal: 0.3
+  task_type: greet
+  q0: [0.0, 0.0, 0.0, 0.0]
+  context:
+    human_distance: 1.2
+
+postprocess:
+  q_min: [-1.57, -1.57, -1.57, -1.57]
+  q_max: [1.57, 1.57, 1.57, 1.57]
+  dq_max: [2.0, 2.0, 2.0, 2.0]
+  smooth_window: 0

@@ -1,0 +1,7 @@
+manifest_path: data/manifests/dataset.yaml
+parquet_path: data/processed/clips.parquet
+stats_path: data/processed/stats.json
+fps: 60
+clip_sec: 4.0
+stride_sec: 2.0
+use_delta_q: true
