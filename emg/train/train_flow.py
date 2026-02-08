@@ -66,10 +66,21 @@ def main():
     num_tasks = len(dataset.task_vocab)
     sample0 = dataset[0]
     q_dim = sample0["x"].shape[-1]
+    context_dim = int(dataset.context_dim)
 
     model_cfg = cfg.get("model", {})
+    cond_cfg = cfg.get("condition", {})
     cond_dim = int(model_cfg.get("cond_dim", 128))
-    cond_encoder = ConditionEncoder(num_tasks=num_tasks, q_dim=q_dim, cond_dim=cond_dim)
+    cond_encoder = ConditionEncoder(
+        num_tasks=num_tasks,
+        q_dim=q_dim,
+        cond_dim=cond_dim,
+        hidden_dim=int(model_cfg.get("cond_hidden_dim", 256)),
+        context_dim=context_dim if cond_cfg.get("use_context", True) else 0,
+        use_q0=bool(cond_cfg.get("use_q0", True)),
+        use_dq0=bool(cond_cfg.get("use_dq0", True)),
+        use_q_goal=bool(cond_cfg.get("use_q_goal", True)),
+    )
     backbone = UNet1D(
         input_channels=q_dim,
         cond_dim=cond_dim,
@@ -110,7 +121,15 @@ def main():
     for step in range(1, num_steps + 1):
         batch = fixed_batch if fixed_batch is not None else collate_batch(next(loader_iter), dataset.task_vocab, device=device)
         x = batch["x"]
-        loss, _ = flow.compute_loss(x, batch["emotion"], batch["task_id"], batch["q0"])
+        loss, _ = flow.compute_loss(
+            x,
+            batch["emotion"],
+            batch["task_id"],
+            q0=batch["q0"],
+            dq0=batch["dq0"],
+            q_goal=batch["q_goal"],
+            context_numeric=batch["context_numeric"],
+        )
 
         optimizer.zero_grad()
         loss.backward()
@@ -134,6 +153,14 @@ def main():
                     "task_vocab": dataset.task_vocab,
                     "q_dim": q_dim,
                     "cond_dim": cond_dim,
+                    "condition_meta": {
+                        "context_dim": context_dim,
+                        "use_q0": bool(cond_cfg.get("use_q0", True)),
+                        "use_dq0": bool(cond_cfg.get("use_dq0", True)),
+                        "use_q_goal": bool(cond_cfg.get("use_q_goal", True)),
+                        "use_context": bool(cond_cfg.get("use_context", True)),
+                        "context_num_keys": list(dataset.stats.get("context_num_keys", [])) if dataset.stats else [],
+                    },
                 },
                 ckpt_path,
             )
@@ -148,6 +175,14 @@ def main():
             "task_vocab": dataset.task_vocab,
             "q_dim": q_dim,
             "cond_dim": cond_dim,
+            "condition_meta": {
+                "context_dim": context_dim,
+                "use_q0": bool(cond_cfg.get("use_q0", True)),
+                "use_dq0": bool(cond_cfg.get("use_dq0", True)),
+                "use_q_goal": bool(cond_cfg.get("use_q_goal", True)),
+                "use_context": bool(cond_cfg.get("use_context", True)),
+                "context_num_keys": list(dataset.stats.get("context_num_keys", [])) if dataset.stats else [],
+            },
             "losses": losses,
         },
         last_path,

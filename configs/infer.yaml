@@ -10,8 +10,15 @@ cond:
     arousal: 0.3
   task_type: greet
   q0: [0.0, 0.0, 0.0, 0.0]
+  dq0: [0.0, 0.0, 0.0, 0.0]
+  q_goal: [0.2, 0.1, -0.1, 0.0]
+  # Optional. If provided, this overrides keys parsed from context.
+  # context_numeric: [1.2, 0.6, 0.0, 1.0, 1.0, 4.0]
   context:
     human_distance: 1.2
+    target_xyz: [0.6, 0.0, 1.0]
+    speed_scale: 1.0
+    duration_sec: 4.0
 
 postprocess:
   q_min: [-1.57, -1.57, -1.57, -1.57]

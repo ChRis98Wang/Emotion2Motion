@@ -4,9 +4,16 @@ use_cuda: true
 model:
   backbone: unet1d
   cond_dim: 128
+  cond_hidden_dim: 256
   base_channels: 64
   num_down: 2
   num_res_blocks: 2
+
+condition:
+  use_q0: true
+  use_dq0: true
+  use_q_goal: true
+  use_context: true
 
 optim:
   lr: 0.001

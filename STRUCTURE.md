@@ -41,12 +41,14 @@
 - `_lowpass_filter(...)`：低通滤波（可选）
 - `_resample(...)`：重采样到 `fps_out`
 - `_slice_clips(...)`：滑窗切 clip
+- `_build_context_vector(...)`：把 context 字段投影为固定维度数值向量
 - `main()`：写出 `clips.parquet` + `stats.json`
+  - 额外生成 `dq0`、`q_goal`、`context_numeric`、`clip_start_idx`
 
 ### 4) `emg/datasets/clip_dataset.py`
 - `ClipDataset.__getitem__`：返回单条样本
   - `x`：训练输入（`delta_q` 或 `q`）
-  - `emotion / task_type / q0`：条件
+  - `emotion / task_type / q0 / dq0 / q_goal / context_numeric`：条件
 - `_to_array(...)`：兼容 parquet 中嵌套数组
 - `build_task_vocab(...)`：`task_type -> id`
 
@@ -54,7 +56,7 @@
 - `collate_batch(...)`：把 batch 组装成张量（含 task_id 映射）
 
 ### 6) `emg/models/cond.py`
-- `ConditionEncoder`：把 `emotion + task_id + q0` 编码为 `cond_vec`
+- `ConditionEncoder`：把 `emotion + task_id + q0 + dq0 + q_goal + context_numeric` 编码为 `cond_vec`
 
 ### 7) `emg/models/unet1d.py`
 - `UNet1D.forward(...)`：主干网络，输入 `x,t,cond` 输出 `v_pred`
@@ -83,10 +85,10 @@
 ### 12) `emg/train/eval_basic.py`
 - `compute_metrics(...)`：约束、速度、平滑度
 - `main()`：输出 `report.json`
+  - `condition_sensitivity` 按生成轨迹计算（不是按原始训练数据）
 
 ## 阅读建议（最快路径）
 1) 先看：`tools/convert_csv_to_parquet.py` → 数据结构
 2) 再看：`ClipDataset`/`collate_batch` → 模型输入
 3) 再看：`ConditionEncoder` + `UNet1D` + `RectifiedFlow`
 4) 最后看：`train_flow.py` + `generate_clip.py` + `postprocess.py`
-

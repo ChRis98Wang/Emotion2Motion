@@ -11,7 +11,7 @@ class RectifiedFlow(nn.Module):
     def forward(self, x, t, cond):
         return self.backbone(x, t, cond)
 
-    def compute_loss(self, x0, emotion, task_id, q0):
+    def compute_loss(self, x0, emotion, task_id, q0=None, dq0=None, q_goal=None, context_numeric=None):
         # x0: [B,T,J]
         device = x0.device
         noise = torch.randn_like(x0)
@@ -19,16 +19,16 @@ class RectifiedFlow(nn.Module):
         x_t = (1.0 - t) * noise + t * x0
         target_v = x0 - noise
 
-        cond = self.cond_encoder(emotion, task_id, q0)
+        cond = self.cond_encoder(emotion, task_id, q0=q0, dq0=dq0, q_goal=q_goal, context_numeric=context_numeric)
         v_pred = self.backbone(x_t, t, cond)
         loss = torch.mean((v_pred - target_v) ** 2)
         return loss, v_pred
 
     @torch.no_grad()
-    def sample(self, shape, emotion, task_id, q0, steps=4):
+    def sample(self, shape, emotion, task_id, q0=None, dq0=None, q_goal=None, context_numeric=None, steps=4):
         device = emotion.device
         x = torch.randn(shape, device=device)
-        cond = self.cond_encoder(emotion, task_id, q0)
+        cond = self.cond_encoder(emotion, task_id, q0=q0, dq0=dq0, q_goal=q_goal, context_numeric=context_numeric)
 
         dt = 1.0 / float(steps)
         for i in range(steps):

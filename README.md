@@ -24,7 +24,7 @@ python tools/convert_csv_to_parquet.py --manifest data/manifests/dataset.yaml \
 python emg/train/train_flow.py --config configs/train_flow.yaml
 
 # 5) 推理生成 + 后处理
-python emg/infer/generate_clip.py --config configs/infer.yaml --out_dir data/tmp/generated
+python emg/infer/generate_clip.py --config configs/infer.yaml --out_dir data/tmp/generated --device auto
 
 # 6) 基础评估报告
 python emg/train/eval_basic.py --ckpt data/tmp/checkpoints/flow_last.pt \
@@ -63,3 +63,6 @@ python tools/plot_training.py --log data/tmp/checkpoints/train_log.json --out da
 - DoF 可配置：模型内部不硬编码 J，来自数据/配置。
 - 后处理强制关节位置与速度约束。
 - 若本地无 `scipy`，低通滤波会跳过并提示。
+- 默认 condition 不只包含 `emotion/task/q0`，还包含 `dq0`、`q_goal` 与 `context_numeric`。
+- `tools/make_manifest.py` 会在 manifest 中生成 `context_num_keys`，`convert_csv_to_parquet.py` 会按该配置把 context 投影为固定维度向量。
+- 推理时可加 `--strict_task`，当 task 不在训练词表中时直接报错，避免静默回退。

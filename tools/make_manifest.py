@@ -34,7 +34,13 @@ def main():
                 "demo_id": demo_id,
                 "csv_path": str(csv_path.as_posix()),
                 "emotion": {"valence": float(valence), "arousal": float(arousal), "text": ""},
-                "context": {"task_type": task_type},
+                "context": {
+                    "task_type": task_type,
+                    "human_distance": 1.2,
+                    "target_xyz": [0.6, 0.0, 1.0],
+                    "speed_scale": 1.0,
+                    "duration_sec": float(args.clip_sec),
+                },
             }
         )
 
@@ -46,6 +52,13 @@ def main():
         "use_delta_q": args.use_delta_q,
         "joints_expected": args.joints_expected,
         "angle_unit": args.angle_unit,
+        # Values listed here are projected into a fixed numeric vector for model conditioning.
+        "context_num_keys": [
+            "human_distance",
+            "target_xyz",
+            "speed_scale",
+            "duration_sec",
+        ],
         "items": items,
     }
 

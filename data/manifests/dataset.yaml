@@ -5,6 +5,11 @@ lowpass_hz: 6.0
 use_delta_q: true
 joints_expected: 4
 angle_unit: rad
+context_num_keys:
+- human_distance
+- target_xyz
+- speed_scale
+- duration_sec
 items:
 - demo_id: demo_0001_greet
   csv_path: data/raw/demo_0001_greet.csv
@@ -14,6 +19,13 @@ items:
     text: ''
   context:
     task_type: greet
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0002_idle
   csv_path: data/raw/demo_0002_idle.csv
   emotion:
@@ -22,6 +34,13 @@ items:
     text: ''
   context:
     task_type: idle
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0003_point
   csv_path: data/raw/demo_0003_point.csv
   emotion:
@@ -30,6 +49,13 @@ items:
     text: ''
   context:
     task_type: point
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0004_celebrate
   csv_path: data/raw/demo_0004_celebrate.csv
   emotion:
@@ -38,6 +64,13 @@ items:
     text: ''
   context:
     task_type: celebrate
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0005_apologize
   csv_path: data/raw/demo_0005_apologize.csv
   emotion:
@@ -46,6 +79,13 @@ items:
     text: ''
   context:
     task_type: apologize
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0006_greet
   csv_path: data/raw/demo_0006_greet.csv
   emotion:
@@ -54,6 +94,13 @@ items:
     text: ''
   context:
     task_type: greet
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0007_idle
   csv_path: data/raw/demo_0007_idle.csv
   emotion:
@@ -62,6 +109,13 @@ items:
     text: ''
   context:
     task_type: idle
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0008_point
   csv_path: data/raw/demo_0008_point.csv
   emotion:
@@ -70,6 +124,13 @@ items:
     text: ''
   context:
     task_type: point
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0009_celebrate
   csv_path: data/raw/demo_0009_celebrate.csv
   emotion:
@@ -78,6 +139,13 @@ items:
     text: ''
   context:
     task_type: celebrate
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0010_apologize
   csv_path: data/raw/demo_0010_apologize.csv
   emotion:
@@ -86,6 +154,13 @@ items:
     text: ''
   context:
     task_type: apologize
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0011_greet
   csv_path: data/raw/demo_0011_greet.csv
   emotion:
@@ -94,6 +169,13 @@ items:
     text: ''
   context:
     task_type: greet
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0012_idle
   csv_path: data/raw/demo_0012_idle.csv
   emotion:
@@ -102,6 +184,13 @@ items:
     text: ''
   context:
     task_type: idle
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0013_point
   csv_path: data/raw/demo_0013_point.csv
   emotion:
@@ -110,6 +199,13 @@ items:
     text: ''
   context:
     task_type: point
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0014_celebrate
   csv_path: data/raw/demo_0014_celebrate.csv
   emotion:
@@ -118,6 +214,13 @@ items:
     text: ''
   context:
     task_type: celebrate
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0015_apologize
   csv_path: data/raw/demo_0015_apologize.csv
   emotion:
@@ -126,6 +229,13 @@ items:
     text: ''
   context:
     task_type: apologize
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0016_greet
   csv_path: data/raw/demo_0016_greet.csv
   emotion:
@@ -134,6 +244,13 @@ items:
     text: ''
   context:
     task_type: greet
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0017_idle
   csv_path: data/raw/demo_0017_idle.csv
   emotion:
@@ -142,6 +259,13 @@ items:
     text: ''
   context:
     task_type: idle
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0018_point
   csv_path: data/raw/demo_0018_point.csv
   emotion:
@@ -150,6 +274,13 @@ items:
     text: ''
   context:
     task_type: point
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0019_celebrate
   csv_path: data/raw/demo_0019_celebrate.csv
   emotion:
@@ -158,6 +289,13 @@ items:
     text: ''
   context:
     task_type: celebrate
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0020_apologize
   csv_path: data/raw/demo_0020_apologize.csv
   emotion:
@@ -166,6 +304,13 @@ items:
     text: ''
   context:
     task_type: apologize
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0021_greet
   csv_path: data/raw/demo_0021_greet.csv
   emotion:
@@ -174,6 +319,13 @@ items:
     text: ''
   context:
     task_type: greet
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0022_idle
   csv_path: data/raw/demo_0022_idle.csv
   emotion:
@@ -182,6 +334,13 @@ items:
     text: ''
   context:
     task_type: idle
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0023_point
   csv_path: data/raw/demo_0023_point.csv
   emotion:
@@ -190,6 +349,13 @@ items:
     text: ''
   context:
     task_type: point
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0024_celebrate
   csv_path: data/raw/demo_0024_celebrate.csv
   emotion:
@@ -198,6 +364,13 @@ items:
     text: ''
   context:
     task_type: celebrate
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0025_apologize
   csv_path: data/raw/demo_0025_apologize.csv
   emotion:
@@ -206,6 +379,13 @@ items:
     text: ''
   context:
     task_type: apologize
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0026_greet
   csv_path: data/raw/demo_0026_greet.csv
   emotion:
@@ -214,6 +394,13 @@ items:
     text: ''
   context:
     task_type: greet
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0027_idle
   csv_path: data/raw/demo_0027_idle.csv
   emotion:
@@ -222,6 +409,13 @@ items:
     text: ''
   context:
     task_type: idle
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0028_point
   csv_path: data/raw/demo_0028_point.csv
   emotion:
@@ -230,6 +424,13 @@ items:
     text: ''
   context:
     task_type: point
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0029_celebrate
   csv_path: data/raw/demo_0029_celebrate.csv
   emotion:
@@ -238,6 +439,13 @@ items:
     text: ''
   context:
     task_type: celebrate
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
 - demo_id: demo_0030_apologize
   csv_path: data/raw/demo_0030_apologize.csv
   emotion:
@@ -246,3 +454,10 @@ items:
     text: ''
   context:
     task_type: apologize
+    human_distance: 1.2
+    target_xyz:
+    - 0.6
+    - 0.0
+    - 1.0
+    speed_scale: 1.0
+    duration_sec: 4.0
